@@ -39,4 +39,21 @@ public class GestorColas {
     public int getTotalPacientesEnEspera() {
         return colaPacientes.size();
     }
+
+    // Método extra para la Interfaz Gráfica: devuelve todos los pacientes en formato texto
+    public String obtenerEstadoCola() {
+        if (colaPacientes.isEmpty()) {
+            return "No hay pacientes en espera.";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        int posicion = 1;
+        // Podemos iterar sobre una Queue en Java sin sacarlos de la cola
+        for (Paciente p : colaPacientes) {
+            sb.append(posicion).append(". [DNI: ").append(p.getDni()).append("] ")
+              .append(p.getNombre()).append(" - Urgencia: ").append(p.getNivelUrgencia()).append("\n");
+            posicion++;
+        }
+        return sb.toString();
+    }
 }
