@@ -29,4 +29,14 @@ public class GestorColas {
         System.out.println("Ateniendo a: "+atendido.getNombre());
         return atendido;
     }
+
+    // Método para ver quién es el siguiente sin sacarlo de la cola 'peek'
+    public Paciente verSiguiente() {
+        return colaPacientes.peek();
+    }
+
+    // Método para saber cúantoss pacientes hay esperando 'size'
+    public int getTotalPacientesEnEspera() {
+        return colaPacientes.size();
+    }
 }
