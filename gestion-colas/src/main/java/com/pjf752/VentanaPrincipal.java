@@ -18,6 +18,7 @@ public class VentanaPrincipal extends JFrame {
 
     public VentanaPrincipal() {
         gestor = new GestorColas();
+        gestor.cargarDatos(); // Cargar datos previos si existen
         
         // Configuración básica de la ventana
         setTitle("Gestor de Colas - Clínica");
@@ -83,6 +84,7 @@ public class VentanaPrincipal extends JFrame {
                     txtUrgencia.setText("");
 
                     actualizarPantalla();
+                    gestor.guardarDatos(); // Guardar datos cada vez que se registra un nuevo paciente
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "La urgencia debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -97,6 +99,7 @@ public class VentanaPrincipal extends JFrame {
                 if (p != null) {
                     JOptionPane.showMessageDialog(null, "Atendiendo a: " + p.getNombre(), "Llamada a consulta", JOptionPane.INFORMATION_MESSAGE);
                     actualizarPantalla();
+                    gestor.guardarDatos(); // Guardar datos cada vez que se atiende a un paciente
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay pacientes en la cola.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
